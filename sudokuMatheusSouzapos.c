@@ -77,43 +77,21 @@ bool checkColumn(int sudokuBoard[9][9]){
 }
 
 bool checkBlock(int sudokuBoard[9][9]){
-  for(int a = 0; a < 7; a+=3){
-    for(int i = a; i < a+3; i++){
-      for(int j = 0; j < 3; j++){
-        bool numberCounter[9] = {false};
-        
-        if(!numberCounter[(sudokuBoard[i][j]-1)]){
-          numberCounter[(sudokuBoard[i][j]-1)] = true;
-        }
-        else{
-          return false;
-        }
-      }
-
-      for(int j = 3; j < 6; j++){
-        int numberCounter[9] = {0};
-        
-        if(!numberCounter[(sudokuBoard[i][j]-1)]){
-          numberCounter[(sudokuBoard[i][j]-1)] = true;
-        }
-        else{
-          return false;
-        }
-      }
-
-      for(int j = 6; j < 9; j++){
-        int numberCounter[9] = {0};
-        
-        if(!numberCounter[(sudokuBoard[i][j]-1)]){
-          numberCounter[(sudokuBoard[i][j]-1)] = true;
-        }
-        else{
-          return false;
+  for(int a = 0; a < 9; a+=3){
+    for(int b = 0; b < 9; b+=3){
+      bool numberCounter[9] = {false};
+      for(int i = a; i < a+3; i++){
+        for(int j = b; j < b+3; j++){
+          if(!numberCounter[sudokuBoard[i][j] - 1]){
+            numberCounter[sudokuBoard[i][j] - 1] = true;
+          }
+          else{
+            return false;
+          }
         }
       }
     }
   }
-
   return true;
 }
 
